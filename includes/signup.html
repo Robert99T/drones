@@ -1,0 +1,31 @@
+<?php  
+
+require 'conectare.php';
+
+if (!empty($_POST['nume']) && !empty($_POST['prenume']) && !empty($_POST['username']) && !empty($_POST['parola']) && isset($_POST['nume']) && isset($_POST['prenume']) && isset($_POST['username']) && isset($_POST['parola'])) {
+
+$nume = $_POST['nume'];
+$prenume = $_POST['prenume'];
+$username = strtolower($_POST['username']);
+$parola = $_POST['parola'];
+
+$sql = "SELECT username FROM drone WHERE username ='$username'";
+$result = mysqli_query($conectare, $sql);
+$check = mysqli_num_rows($result);
+
+if(check > 0) {
+	header ("Location: ../cont.php?info=exista");
+	die();
+}else {
+  $sql = "INSERT INTO drone(nume, prenume, username, parola) VALUES ('$nume', '$prenume', '$username', '$parola')";
+$result = mysqli_query($conectare, $sql);
+
+header ("Location: ../cont.php?info=ok");
+
+}
+
+
+
+}else {
+   header ("Location: ../cont.php?info=eroare");
+}

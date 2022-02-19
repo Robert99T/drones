@@ -1,0 +1,57 @@
+<?php
+  session_start();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drones</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta charset="utf-8">
+</head>
+<body background="logo/Design fără titlu.jpg" style="background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+	 <?php
+     if(isset($_SESSION['id'])) {
+      echo 'Prenumele meu este'.$_SESSION['prenume'];
+     }
+  ?>
+	<div class="container">
+		<div class="cont">
+			<h1 style="margin-top: 140px;">Conecteazăte</h1>
+			<form method="POST" action="includes/signup.php">
+			<input style="color: white;" type="text" name="username" placeholder="Username"><br>
+			<input style="color: white;" type="password" name="parola" placeholder="Parola"><br>
+			<input type="submit" name="buton" value="Log In">
+		</form>
+		 <?php
+      if(isset($_GET['info']) && $_GET['info'] == 'gresit') {
+        echo '<p style="text-align: center; color: red; font-size: 20px;">Parola este gresita</p>';
+      }
+    ?>
+		</div>
+		
+	</div>
+	<div class="side-bar">
+			<nav>
+				<ul>
+					<li><a href="home.php"><img src="logo/menu.png" class="menu"><a></li>
+				</ul>
+			</nav>
+
+			<div class="social">
+				<a href="info.php"><img src="logo/pngtree-vector-information-icon-png-image_4184479-removebg-preview.png"></a><br>
+				<a href="cont.php"><img src="logo/logare-removebg-preview.png"></a><br>
+				<a href="galerie.php"><img src="logo/galerie999-removebg-preview.png"></a><br>
+			</div>
+
+			<div class="use">
+				<a href="termeni.php"><img src="logo/share.png"></a><br>
+				<img src="logo/info.png"><br>
+			</div>
+		</div>
+		
+	</div>
+	</div>
+
+</body>
+</html>
